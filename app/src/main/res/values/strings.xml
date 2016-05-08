@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">What to Watch</string>
     <string name="action_settings">Settings</string>
+    <string name="API_KEY">7929cf9ce016b589b2d5bc43b4295f30</string>
+    <string name="title_activity_menu">Menu</string>
 </resources>
