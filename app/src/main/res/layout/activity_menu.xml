@@ -5,16 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.whattowatch.home.Menu">
+    android:background="@color/colorBackGround"
+    tools:context=".home.MenuActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <Button
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:text="What To Watch"
+            android:textSize="70dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlueNeon"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:text="Test"
-            android:onClick="sendRequest"/>
+            android:textSize="20dp"
+            android:onClick="sendRequest"
+            android:background="@color/colorBlueNeon"
+            android:textColor="@color/colorWhite"
+            />
 
         <TextView
             android:id="@+id/result"
