@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/colorBackGround"
-    tools:context=".home.MenuActivity">
+    tools:context="com.example.whattowatch.choices.ChoicesActivity">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,13 +18,64 @@
     android:background="@color/colorBackGround"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.whattowatch.choices.ChoicesActivity">
-    <Button
-        android:layout_width="wrap_content"
+    >
+
+    <HorizontalScrollView
+        android:id="@+id/genre_scrollview"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test"
-        android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame"
-        android:layout_gravity="center_horizontal"/>
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/layout_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/g1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Action"
+                android:onClick="action"
+                android:background="@color/colorWhite"
+                />
+            <Button
+                android:id="@+id/g2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Comedy"
+                android:background="@color/colorWhite"
+                android:onClick="action"
+                />
+            <Button
+                android:id="@+id/g3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Romance"
+                android:background="@color/colorWhite"
+                android:onClick="action"
+                />
+            <Button
+                android:id="@+id/g4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Drama"
+                android:background="@color/colorWhite"
+                android:onClick="action"
+                />
+
+            <Button
+                android:id="@+id/g5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Thriller"
+                android:background="@color/colorWhite"
+                android:onClick="action"
+                />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
     <RelativeLayout android:layout_width="fill_parent"
         android:layout_height="fill_parent" android:gravity="bottom">
 
