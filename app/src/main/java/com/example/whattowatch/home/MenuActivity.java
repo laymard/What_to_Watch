@@ -1,5 +1,6 @@
 package com.example.whattowatch.home;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.whattowatch.R;
+import com.example.whattowatch.choices.ChoicesActivity;
 
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.model.MovieDb;
@@ -20,6 +22,10 @@ public class MenuActivity extends AppCompatActivity {
     private TextView textView;
     private TextView title;
     private MenuPresenter menuPresenter;
+
+    public void navigateToChoices(View view) {
+        startActivity(new Intent(this, ChoicesActivity.class));
+    }
 
     private class myTask extends AsyncTask<Void, Void, String> {
 

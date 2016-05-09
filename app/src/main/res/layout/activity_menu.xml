@@ -21,6 +21,17 @@
             android:textAlignment="center"
             android:textColor="@color/colorBlueNeon"
             />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Test"
+            android:textSize="20dp"
+            android:onClick="navigateToChoices"
+            android:background="@color/colorBlueNeon"
+            android:textColor="@color/colorWhite"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
