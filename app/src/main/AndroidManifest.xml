@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".choices.ChoicesActivity"></activity>
+        <activity android:name=".choices.ChoicesActivity" />
+        <activity android:name=".results.ResultsActivity"></activity>
     </application>
 
 </manifest>

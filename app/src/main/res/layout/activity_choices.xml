@@ -23,55 +23,47 @@
     <HorizontalScrollView
         android:id="@+id/genre_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
         android:scrollbars="none">
         <LinearLayout
             android:id="@+id/layout_genre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+           >
 
             <Button
                 android:id="@+id/g1"
+                android:tag="Action"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Action"
                 android:onClick="action"
                 android:background="@color/colorWhite"
+                android:layout_margin="20dp"
                 />
             <Button
                 android:id="@+id/g2"
+                android:tag="Adventure"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Comedy"
+                android:text="Adventure"
                 android:background="@color/colorWhite"
                 android:onClick="action"
+                android:layout_margin="20dp"
                 />
             <Button
                 android:id="@+id/g3"
+                android:tag="Animation"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Romance"
+                android:text="Animation"
                 android:background="@color/colorWhite"
                 android:onClick="action"
-                />
-            <Button
-                android:id="@+id/g4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Drama"
-                android:background="@color/colorWhite"
-                android:onClick="action"
+                android:layout_margin="20dp"
                 />
 
-            <Button
-                android:id="@+id/g5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Thriller"
-                android:background="@color/colorWhite"
-                android:onClick="action"
-                />
+
         </LinearLayout>
 
     </HorizontalScrollView>
@@ -86,7 +78,8 @@
             android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:layout_gravity="center_vertical"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:onClick="launchRequest"/>
 
 
     </RelativeLayout>
