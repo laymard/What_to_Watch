@@ -15,6 +15,7 @@ import com.example.whattowatch.results.ResultsActivity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import info.movito.themoviedbapi.TmdbApi;
@@ -55,12 +56,19 @@ public class ChoicesActivity extends AppCompatActivity {
     }
 
     public void showResults(List<MovieDb> movies){
-        MovieDb movie = movies.get(0);
+        Intent intent = new Intent(this,ResultsActivity.class);
+
+        ArrayList<String> movieJson = new ArrayList<String>();
+        Bundle myBundle = new Bundle();
         ObjectMapper mapper = new ObjectMapper();
         try {
-            String movieJsonString = mapper.writeValueAsString(movie);
-            Intent intent = new Intent(this,ResultsActivity.class);
-            intent.putExtra("movie",movieJsonString);
+            for (int i=0; i<Math.min(10,movies.size());i++){
+                MovieDb movie = movies.get(i);
+                String movieJsonString = mapper.writeValueAsString(movie);
+                movieJson.add(movieJsonString);
+            }
+            myBundle.putStringArrayList("movies",movieJson);
+            intent.putExtras(myBundle);
             startActivity(intent);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
