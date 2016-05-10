@@ -29,7 +29,22 @@
         <item name="android:textSize">20dp</item>
     </style>
 
+    <style name="title_screen" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
 
+    <style name="movie_title" >
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+
+    </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 

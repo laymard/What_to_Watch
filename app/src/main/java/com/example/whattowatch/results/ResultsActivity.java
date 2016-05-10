@@ -3,6 +3,7 @@ package com.example.whattowatch.results;
 import android.app.ActionBar;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
@@ -34,6 +35,9 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         this.results = (LinearLayout) findViewById(R.id.posters);
+        TextView title = (TextView) findViewById(R.id.TITLE_Result);
+        Typeface type = Typeface.createFromAsset(getAssets(), "Atlantic_Cruise-Demo.ttf");
+        title.setTypeface(type);
 
         ArrayList<String> moviesJson = getIntent().getExtras().getStringArrayList("movies");
         this.movieDbs = new ArrayList<MovieDb>();
@@ -69,15 +73,14 @@ public class ResultsActivity extends AppCompatActivity {
     }
     public LinearLayout generatePosterLayout(MovieDb movieDb){
         LinearLayout poster = new LinearLayout(this);
-        poster.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
-        poster.setGravity(Gravity.TOP | Gravity.CENTER);
+        poster.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
         poster.setOrientation(LinearLayout.VERTICAL);
+        poster.setGravity(Gravity.CENTER_VERTICAL);
 
         TextView textView = new TextView(this);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20.0f);
+        textView.setTextAppearance(this, R.style.movie_title);
         textView.setText(movieDb.getTitle());
-        textView.setTextColor(getResources().getColor(R.color.colorWhite));
+        textView.setTypeface(Typeface.createFromAsset(getAssets(), "Atlantic_Cruise-Demo.ttf"));
         poster.addView(textView);
 
         ImageView imageView = new ImageView(this);

@@ -4,9 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.whattowatch.results.ResultsActivity">
 
@@ -16,8 +13,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="top"
-        android:layout_weight="6"
-        >
+        android:layout_weight="6">
+
+
+
+        <TextView
+            android:id="@+id/TITLE_Result"
+            style="@style/title_screen"
+            android:text="You have to watch that !"
+            android:layout_gravity="center_horizontal" />
 
 
     </LinearLayout>
@@ -40,7 +44,7 @@
                 android:id="@+id/posters"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:orientation="horizontal">
 
             </LinearLayout>
