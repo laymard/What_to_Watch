@@ -4,10 +4,13 @@ import android.app.ActionBar;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,27 +26,26 @@ import java.util.ArrayList;
 import info.movito.themoviedbapi.model.MovieDb;
 
 public class ResultsActivity extends AppCompatActivity {
-    private TextView result;
     private ArrayList<MovieDb> movieDbs;
+    private LinearLayout results;
     public static String posterBasePath = "https://image.tmdb.org/t/p/w185";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+        this.results = (LinearLayout) findViewById(R.id.posters);
+
         ArrayList<String> moviesJson = getIntent().getExtras().getStringArrayList("movies");
         this.movieDbs = new ArrayList<MovieDb>();
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            new downloadPic().execute(mapper.readValue(moviesJson.get(0), MovieDb.class));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         try {
 
             for (int i=0; i<moviesJson.size();i++){
                 MovieDb movie = mapper.readValue(moviesJson.get(i), MovieDb.class);
                 this.movieDbs.add(movie);
-                addMovie(movie);
+                generatePosterLayout(movie);
+                Log.i("Title added : ", movie.getTitle());
+                Log.i("Poster URl:", movie.getPosterPath());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,18 +67,44 @@ public class ResultsActivity extends AppCompatActivity {
         layout.addView(textView);
 
     }
+    public LinearLayout generatePosterLayout(MovieDb movieDb){
+        LinearLayout poster = new LinearLayout(this);
+        poster.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
+        poster.setGravity(Gravity.TOP | Gravity.CENTER);
+        poster.setOrientation(LinearLayout.VERTICAL);
 
-    public void setFirstPoster(Drawable d){
-        ImageView firstPoster= (ImageView) findViewById(R.id.p1);
-        firstPoster.setImageDrawable(d);
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20.0f);
+        textView.setText(movieDb.getTitle());
+        textView.setTextColor(getResources().getColor(R.color.colorWhite));
+        poster.addView(textView);
+
+        ImageView imageView = new ImageView(this);
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT));
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setAdjustViewBounds(true);
+        poster.addView(imageView);
+
+        PairMovieDbImageView pair = new PairMovieDbImageView(movieDb,imageView);
+        new downloadPic().execute(pair);
+        this.results.addView(poster);
+        return poster;
+
     }
 
-    private class downloadPic extends AsyncTask<MovieDb,Void,Drawable>{
+
+    private class downloadPic extends AsyncTask<PairMovieDbImageView,Void,Drawable>{
+
+        private ImageView imageView;
+        private MovieDb movieDb;
 
         @Override
-        protected Drawable doInBackground(MovieDb... params) {
+        protected Drawable doInBackground(PairMovieDbImageView... params) {
+            this.imageView = params[0].getImageView();
+            this.movieDb=params[0].getMovieDb();
             try {
-                InputStream is = (InputStream) new URL(ResultsActivity.posterBasePath+params[0].getPosterPath()).getContent();
+                InputStream is = (InputStream) new URL(ResultsActivity.posterBasePath+this.movieDb.getPosterPath()).getContent();
                 Drawable d = Drawable.createFromStream(is, "src name");
                 return d;
             } catch (IOException e) {
@@ -87,7 +115,8 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(Drawable result) {
-            setFirstPoster(result);
+            Log.i("OnPostExecute","downloaded pic");
+            imageView.setImageDrawable(result);
         }
 
 

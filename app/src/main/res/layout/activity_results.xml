@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="top"
-        android:layout_weight="3"
+        android:layout_weight="6"
         >
 
 
@@ -31,25 +31,20 @@
         android:layout_weight="1">
 
         <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbars="none">>
             <LinearLayout
+                android:id="@+id/posters"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="left">
-
-                <ImageView
-                    android:id="@+id/p1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/deadpool"/>
-
-
+                android:layout_gravity="left"
+                android:orientation="horizontal">
 
             </LinearLayout>
-    </HorizontalScrollView>
+        </HorizontalScrollView>
 
 
 
