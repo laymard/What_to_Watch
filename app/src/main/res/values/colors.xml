@@ -6,4 +6,7 @@
     <color name="colorBackGround">#550003</color>
     <color name="colorBlueNeon">#00bfb8</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="primary_material_light">#a53a3a</color>
+    <color name="primary_text_material_light">#ffffff</color>
+    <color name="primary_text_material_dark">#3c3c3c</color>
 </resources>

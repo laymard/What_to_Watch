@@ -6,16 +6,18 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/colorBackGround"
-    tools:context=".home.MenuActivity">
+    tools:context=".home.MenuActivity"
+    style="@style/AppTheme_W2W.NoActionBar">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center|top">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/title"
+            android:paddingLeft="10dp"
             android:text="What To Watch"
             android:textSize="70dp"
             android:textAlignment="center"
@@ -23,31 +25,16 @@
             />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Test"
-            android:textSize="20dp"
+            android:text="Get a List"
             android:onClick="navigateToChoices"
-            android:background="@color/colorBlueNeon"
-            android:textColor="@color/colorWhite"
-            />
+            style="@style/button_blue" />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Test"
-            android:textSize="20dp"
             android:onClick="sendRequest"
-            android:background="@color/colorBlueNeon"
-            android:textColor="@color/colorWhite"
+            style="@style/button_blue"
             />
-
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="coucou"/>
 
     </LinearLayout>
 

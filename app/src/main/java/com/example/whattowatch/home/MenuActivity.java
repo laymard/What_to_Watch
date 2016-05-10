@@ -52,7 +52,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        this.textView = (TextView) findViewById(R.id.result);
         this.menuPresenter = new MenuPresenter(this);
         this.title = (TextView) findViewById(R.id.title);
         Typeface type = Typeface.createFromAsset(getAssets(), "Park Lane NF.ttf");
