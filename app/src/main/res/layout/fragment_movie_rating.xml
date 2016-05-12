@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/rating_title"
         android:text="TMDB Rating"
-        android:textSize="30dp"
+        android:textSize="40dp"
         android:textColor="@color/colorBackGround"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

@@ -28,12 +28,6 @@
             android:text="Get a List"
             android:onClick="navigateToChoices"
             style="@style/button_blue" />
-        <Button
-            android:layout_marginTop="50dp"
-            android:text="Test"
-            android:onClick="sendRequest"
-            style="@style/button_blue"
-            />
 
     </LinearLayout>
 

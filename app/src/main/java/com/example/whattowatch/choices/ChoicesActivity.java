@@ -24,38 +24,37 @@ import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 
 public class ChoicesActivity extends AppCompatActivity {
-    private LinearLayout genre_layout;
-    private Button selectedButton;
+    private LinearLayout layout_genre_pictured;
+    private LinearLayout selectedGenre;
     private ChoicesPresenter presenter;
     public static List<MovieDb> movieToSend = new ArrayList<MovieDb>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.presenter = new ChoicesPresenter(this);
-
         setContentView(R.layout.activity_choices);
-        this.genre_layout = (LinearLayout) findViewById(R.id.layout_genre);
-    }
-
-
-    public void action(View view) {
-        Button  button = (Button)view;
-        this.selectedButton = button;
-        int id = button.getId();
-        Log.i("Choices", "ID: " + id);
-        System.out.println("Id of button touch: " + id);
-        int children = genre_layout.getChildCount();
-        for (int i =0;i<children;i++){
-            Button child = (Button)genre_layout.getChildAt(i);
-            if(id == child.getId()){
-                button.setBackgroundColor(getResources().getColor(R.color.colorBlueNeon));
-            }else{
-                child.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-            }
-        }
+        this.presenter = new ChoicesPresenter(this);
+        this.layout_genre_pictured = (LinearLayout) findViewById(R.id.layout_genre_pictured);
+        presenter.addGenres(this.layout_genre_pictured);
 
     }
+
+    public LinearLayout getLayout_genre_pictured() {
+        return layout_genre_pictured;
+    }
+
+    public void setLayout_genre_pictured(LinearLayout layout_genre_pictured) {
+        this.layout_genre_pictured = layout_genre_pictured;
+    }
+
+    public LinearLayout getSelectedGenre() {
+        return selectedGenre;
+    }
+
+    public void setSelectedGenre(LinearLayout selectedGenre) {
+        this.selectedGenre = selectedGenre;
+    }
+
 
    /* public void showResults(List<MovieDb> movies){
         Intent intent = new Intent(this,ResultsActivity.class);
@@ -85,7 +84,7 @@ public class ChoicesActivity extends AppCompatActivity {
     }
 
     public int getGenreId() {
-        String tag = this.selectedButton.getTag().toString();
+        String tag = this.selectedGenre.getTag().toString();
         Log.i("tag=",tag);
         return this.presenter.getId(tag);
     }

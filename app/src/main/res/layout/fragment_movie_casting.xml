@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/casting_title"
         android:text="Casting"
-        android:textSize="30dp"
+        android:textSize="40dp"
         android:textColor="@color/colorBackGround"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
