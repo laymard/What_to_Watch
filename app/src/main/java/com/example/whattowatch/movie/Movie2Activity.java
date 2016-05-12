@@ -108,7 +108,7 @@ public class Movie2Activity extends AppCompatActivity {
         List<PersonCast> casting = new ArrayList<PersonCast>();
         casting = this.movieDb.getCast();
         int size = casting.size();
-        for (int i=0;i<Math.min(5,size);i++){
+        for (int i=0;i<5;i++){
             String character = casting.get(i).getCharacter();
             String actor = casting.get(i).getName();
 

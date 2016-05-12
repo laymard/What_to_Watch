@@ -27,7 +27,6 @@ public class ChoicesPresenter {
 
     public ChoicesPresenter(ChoicesActivity act){
         this.activity = act;
-        this.genreToId = new HashMap<String,Integer>();
         this.genreToPut = new ArrayList<>();
 
         GenreItem g1 = new GenreItem("Action",28);
@@ -40,10 +39,6 @@ public class ChoicesPresenter {
         genreToPut.add(g3);
         genreToPut.add(g4);
 
-        genreToId.put("action",28);
-        genreToId.put("adventure",12);
-        genreToId.put("animation",16);
-        genreToId.put("comedy",35);
 
     }
 

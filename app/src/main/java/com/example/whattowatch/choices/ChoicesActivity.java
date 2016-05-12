@@ -27,6 +27,7 @@ public class ChoicesActivity extends AppCompatActivity {
     private LinearLayout layout_genre_pictured;
     private LinearLayout selectedGenre;
     private ChoicesPresenter presenter;
+    private Button bottomButton;
     public static List<MovieDb> movieToSend = new ArrayList<MovieDb>();
 
     @Override
@@ -35,8 +36,15 @@ public class ChoicesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choices);
         this.presenter = new ChoicesPresenter(this);
         this.layout_genre_pictured = (LinearLayout) findViewById(R.id.layout_genre_pictured);
+        this.bottomButton = (Button) findViewById(R.id.bottom_button);
         presenter.addGenres(this.layout_genre_pictured);
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        this.bottomButton.setClickable(true);
     }
 
     public LinearLayout getLayout_genre_pictured() {
@@ -56,30 +64,10 @@ public class ChoicesActivity extends AppCompatActivity {
     }
 
 
-   /* public void showResults(List<MovieDb> movies){
-        Intent intent = new Intent(this,ResultsActivity.class);
-        ChoicesActivity.movieJsonToSend.clear();
-        ArrayList<String> movieJson = new ArrayList<String>();
-        Bundle myBundle = new Bundle();
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            for (int i=0; i<Math.min(10,movies.size());i++){
-                MovieDb movie = movies.get(i);
-                String movieJsonString = mapper.writeValueAsString(movie);
-                ChoicesActivity.movieJsonToSend.add(movieJsonString);
-                movieJson.add(movieJsonString);
-            }
-           // myBundle.putStringArrayList("movies",movieJson);
-            //intent.putExtras(myBundle);
-            startActivity(intent);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-    }*/
-
 
     public void launchRequest(View view) {
         int id = getGenreId();
+        this.bottomButton.setClickable(false);
         new searchByGenre().execute(id);
     }
 
@@ -124,26 +112,7 @@ public class ChoicesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private class searchMovies extends AsyncTask<Void, Void, TmdbMovies> {
 
-        //initiate vars
-        public searchMovies() {
-            super();
-            //my params here
-        }
-
-        protected TmdbMovies doInBackground(Void... params) {
-            TmdbApi api = new TmdbApi("7929cf9ce016b589b2d5bc43b4295f30");
-            TmdbMovies res = api.getMovies();
-            return res;
-        }
-
-        @Override
-        protected void onPostExecute(TmdbMovies result) {
-            //showResults(result);
-
-        }
-    }
 
 
 }

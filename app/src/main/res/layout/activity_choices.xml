@@ -50,6 +50,7 @@
         android:layout_height="fill_parent" android:gravity="bottom">
 
         <Button
+            android:id="@+id/bottom_button"
             android:text="Show me what to watch!"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

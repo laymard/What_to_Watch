@@ -17,9 +17,6 @@ public class MenuPresenter {
         this.activity.setText("connarddetarem");
     }
 
-    public void displayMessage(java.lang.String string){
-        this.activity.setText(string);
-    }
 
 
 }

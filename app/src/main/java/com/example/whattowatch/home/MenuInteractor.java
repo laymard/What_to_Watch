@@ -26,9 +26,6 @@ public class MenuInteractor extends AsyncTask<MenuPresenter, Void, String> {
 
     }
 
-    public void showMovie(MenuPresenter menuPresenter) {
-        doInBackground(menuPresenter);
-    }
 }
 
 

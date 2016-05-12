@@ -68,21 +68,6 @@ public class ResultsActivity extends FragmentActivity {
 
     }
 
-    public void addMovie(MovieDb movie){
-        TextView textView = new TextView(this.getApplicationContext());
-        textView.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.FILL_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        Log.i("Title added : ", movie.getTitle());
-        Log.i("Poster URl:", movie.getPosterPath());
-        textView.setText(movie.getTitle());
-        textView.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-        LinearLayout layout = (LinearLayout) findViewById(R.id.result_page);
-
-
-        layout.addView(textView);
-
-    }
     public LinearLayout generatePosterLayout(MovieDb movieDb,int i){
         LinearLayout poster = new LinearLayout(this);
         poster.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));

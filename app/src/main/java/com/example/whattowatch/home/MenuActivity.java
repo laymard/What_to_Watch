@@ -61,9 +61,6 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
-    public void sendRequest(View view) {
-        new myTask().execute();
-    }
 
     public void setText(String string){
         this.textView.setText(string);
