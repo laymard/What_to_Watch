@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -89,7 +90,7 @@ public class Movie2Activity extends AppCompatActivity {
     }
 
     private void setUserRating() {
-        this.userRating=this.movieDb.getUserRating();
+        this.userRating=this.movieDb.getVoteAverage();
     }
 
     private void setDirector() {
@@ -115,6 +116,7 @@ public class Movie2Activity extends AppCompatActivity {
             this.actors.add(actor);
         }
     }
+
 
 
     @Override
@@ -306,11 +308,51 @@ public class Movie2Activity extends AppCompatActivity {
 
             for (int i=0;i<actors.length;i++){
                 TextView actor = new TextView(getContext());
+                actor.setTextSize(TypedValue.COMPLEX_UNIT_DIP,18f);
                 actor.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
                 actor.setText(getString(R.string.actor_format,actors[i],characters[i]));
                 actors_layout.addView(actor);
             }
 
+        }
+    }
+
+    public static class RatingFragment extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+
+        public RatingFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static RatingFragment newInstance(int sectionNumber,float rate) {
+            RatingFragment fragment = new RatingFragment();
+            Bundle args = new Bundle();
+            args.putFloat("rate", rate);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_movie_rating, container, false);
+            TextView title = (TextView) rootView.findViewById(R.id.rating_title);
+            TextView rate = (TextView) rootView.findViewById(R.id.rating_rate);
+            Typeface type = Typeface.createFromAsset(getContext().getAssets(), "Atlantic_Cruise-Demo.ttf");
+            title.setTypeface(type);
+
+            String rate_2decimal=String.format("%.1f",getArguments().getFloat("rate"));
+
+            rate.setText(getString(R.string.rating_format,rate_2decimal));
+            return rootView;
         }
     }
 
@@ -337,7 +379,7 @@ public class Movie2Activity extends AppCompatActivity {
                     return CastingFragment.newInstance(1,getActorsTab(),getCharactersTab(),getDirector());
 
                 case 2:
-                    break;
+                    return RatingFragment.newInstance(2, getUserRating());
             }
 
             return PlaceholderFragment.newInstance(position + 1);
