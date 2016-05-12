@@ -37,15 +37,19 @@
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
-    <style name="movie_title" >
+    <style name="movie_title">
         <item name="android:textColor">@color/colorGray</item>
         <item name="android:textSize">20dp</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_horizontal</item>
 
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme_W2W.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme_W2W.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

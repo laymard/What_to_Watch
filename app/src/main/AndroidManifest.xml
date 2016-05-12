@@ -21,7 +21,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".choices.ChoicesActivity" />
-        <activity android:name=".results.ResultsActivity"></activity>
+        <activity android:name=".results.ResultsActivity" />
+        <activity android:name=".movie.MovieActivity" />
+        <activity
+            android:name=".movie.Movie2Activity"
+            android:label="@string/title_activity_movie2"
+            android:theme="@style/AppTheme_W2W.NoActionBar"></activity>
     </application>
 
 </manifest>
